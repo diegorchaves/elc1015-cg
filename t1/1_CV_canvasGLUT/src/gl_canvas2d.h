@@ -9,8 +9,6 @@
 #include <GL/glut.h>
 #include <GL/freeglut_ext.h> //callback da wheel do mouse.
 
-#include "Vector2.h"
-
 #define PI_2 6.28318530717
 #define PI   3.14159265359
 
