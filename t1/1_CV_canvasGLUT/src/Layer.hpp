@@ -9,10 +9,12 @@ class Layer {
 public:
     Bmp* image;
     bool visible;
+    int offsetX, offsetY;
 
-    Layer(Bmp* img);
+    Layer(Bmp* img, int x = 0, int y = 0);
     void setVisibility(bool v);
     void draw();
+    void setOffset(int x, int y);
 };
 
 // Gerenciador de camadas

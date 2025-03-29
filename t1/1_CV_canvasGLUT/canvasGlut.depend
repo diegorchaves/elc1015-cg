@@ -49,11 +49,11 @@
 	"Bmp.h"
 	"Layer.hpp"
 
-1743250611 source:c:\users\diego\desktop\home\faculdade\cg\trabalhos\t1\1_cv_canvasglut\src\layer.cpp
+1743251272 source:c:\users\diego\desktop\home\faculdade\cg\trabalhos\t1\1_cv_canvasglut\src\layer.cpp
 	"Layer.hpp"
 	"gl_canvas2d.h"
 
-1743249733 c:\users\diego\desktop\home\faculdade\cg\trabalhos\t1\1_cv_canvasglut\src\layer.hpp
+1743251085 c:\users\diego\desktop\home\faculdade\cg\trabalhos\t1\1_cv_canvasglut\src\layer.hpp
 	<vector>
 	<algorithm>
 	"Bmp.h"
