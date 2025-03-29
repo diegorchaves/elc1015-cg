@@ -39,12 +39,22 @@
 
 1589217858 c:\users\diego\desktop\home\faculdade\cg\trabalhos\t1\1_cv_canvasglut\src\vector2.h
 
-1743198702 source:c:\users\diego\desktop\home\faculdade\cg\trabalhos\t1\1_cv_canvasglut\src\main.cpp
+1743249132 source:c:\users\diego\desktop\home\faculdade\cg\trabalhos\t1\1_cv_canvasglut\src\main.cpp
 	<GL/glut.h>
 	<GL/freeglut_ext.h>
 	<math.h>
 	<stdio.h>
 	<stdlib.h>
 	"gl_canvas2d.h"
+	"Bmp.h"
+	"Layer.hpp"
+
+1743250611 source:c:\users\diego\desktop\home\faculdade\cg\trabalhos\t1\1_cv_canvasglut\src\layer.cpp
+	"Layer.hpp"
+	"gl_canvas2d.h"
+
+1743249733 c:\users\diego\desktop\home\faculdade\cg\trabalhos\t1\1_cv_canvasglut\src\layer.hpp
+	<vector>
+	<algorithm>
 	"Bmp.h"
 
