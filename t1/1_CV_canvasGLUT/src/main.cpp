@@ -19,13 +19,16 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <iostream>
 #include "gl_canvas2d.h"
 #include "Bmp.h"
 #include "Layer.hpp"
+#include "Button.hpp"
 
 //largura e altura inicial da tela . Alteram com o redimensionamento de tela.
 int screenWidth = 500, screenHeight = 500;
+
+ButtonManager buttonManager;
 
 int mouseX, mouseY; //variaveis globais do mouse para poder exibir dentro da render().
 
@@ -56,6 +59,7 @@ void render()
 {
     desenhaFundo();
     desenhaImagens();
+    buttonManager.renderButtons();
 
    Sleep(10); //nao eh controle de FPS. Somente um limitador de FPS.
 }
@@ -76,11 +80,25 @@ void mouse(int button, int state, int wheel, int direction, int x, int y)
 {
    mouseX = x; //guarda as coordenadas do mouse para exibir dentro da render()
    mouseY = y;
+   buttonManager.handleMouseEvent(button, state, mouseX, mouseY);
+   printf("state: %d button: %d\n", state, button);
+}
+
+
+void acaoBotao1() {
+    printf("botao clicado!\n");
+}
+
+void setupBotoes() {
+    // Adicionar um botão na posição (50, 50) até (150, 100)
+    buttonManager.addButton(200, 200, 350, 300, acaoBotao1);
 }
 
 int main(void)
 {
     setupLayers();
+    CV::translate(0, 0);
+    setupBotoes();
     CV::init(&screenWidth, &screenHeight, "Titulo da Janela: Canvas 2D - Pressione 1, 2, 3");
 
     CV::run();

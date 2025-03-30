@@ -21,7 +21,7 @@ void Layer::setOffset(int x, int y)
 
 void Layer::draw() {
     if (visible) {
-        CV::translate(offsetX, offsetY);
+        //CV::translate(offsetX, offsetY);
         uchar* d = image->getImage();
         int bytesPerLine = (3 * (image->getWidth() + 1) / 4) * 4;
 
@@ -77,4 +77,7 @@ void setupLayers() {
 
     // movendo a img 1 uma posicao para baixo, deixando-a em segundo plano
     moveLayerDown(2);
+
+    toggleVisibility(1);
+    toggleVisibility(1);
 }

@@ -39,17 +39,19 @@
 
 1589217858 c:\users\diego\desktop\home\faculdade\cg\trabalhos\t1\1_cv_canvasglut\src\vector2.h
 
-1743249132 source:c:\users\diego\desktop\home\faculdade\cg\trabalhos\t1\1_cv_canvasglut\src\main.cpp
+1743347883 source:c:\users\diego\desktop\home\faculdade\cg\trabalhos\t1\1_cv_canvasglut\src\main.cpp
 	<GL/glut.h>
 	<GL/freeglut_ext.h>
 	<math.h>
 	<stdio.h>
 	<stdlib.h>
+	<iostream>
 	"gl_canvas2d.h"
 	"Bmp.h"
 	"Layer.hpp"
+	"Button.hpp"
 
-1743251272 source:c:\users\diego\desktop\home\faculdade\cg\trabalhos\t1\1_cv_canvasglut\src\layer.cpp
+1743346193 source:c:\users\diego\desktop\home\faculdade\cg\trabalhos\t1\1_cv_canvasglut\src\layer.cpp
 	"Layer.hpp"
 	"gl_canvas2d.h"
 
@@ -57,4 +59,13 @@
 	<vector>
 	<algorithm>
 	"Bmp.h"
+
+1743348002 source:c:\users\diego\desktop\home\faculdade\cg\trabalhos\t1\1_cv_canvasglut\src\button.cpp
+	"Button.hpp"
+	"gl_canvas2d.h"
+	<iostream>
+
+1743346656 c:\users\diego\desktop\home\faculdade\cg\trabalhos\t1\1_cv_canvasglut\src\button.hpp
+	<functional>
+	<vector>
 
