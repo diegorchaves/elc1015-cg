@@ -23,12 +23,18 @@
 #include "gl_canvas2d.h"
 #include "Bmp.h"
 #include "Layer.hpp"
-#include "Button.hpp"
+#include "UIButton.hpp"
+#include "UIButtonManager.hpp"
 
 //largura e altura inicial da tela . Alteram com o redimensionamento de tela.
-int screenWidth = 500, screenHeight = 500;
+int screenWidth = 1200, screenHeight = 900;
+int tamanhoMenuLateral = 350;
+int alturaMenuUm = 100;
+int alturaMenuInferior = 80;
 
-ButtonManager buttonManager;
+Bmp *img1 = new Bmp(".\\1_CV_canvasGLUT\\images\\img1.bmp");
+
+UIButtonManager uiManager;
 
 int mouseX, mouseY; //variaveis globais do mouse para poder exibir dentro da render().
 
@@ -52,14 +58,30 @@ void desenhaFundo()
     }
 }
 
+void desenhaInterface()
+{
+    CV::color(0);
+    CV::rectFill(0, 0, tamanhoMenuLateral, screenHeight);
+    CV::rectFill(tamanhoMenuLateral, 0, screenWidth, alturaMenuInferior);
+
+    CV::color(1);
+    CV::line(0, screenHeight - alturaMenuUm, tamanhoMenuLateral, screenHeight - alturaMenuUm);
+    CV::line(0, screenHeight - 2*alturaMenuUm, tamanhoMenuLateral, screenHeight - 2*alturaMenuUm);
+    CV::line(0, screenHeight - 5*alturaMenuUm, tamanhoMenuLateral, screenHeight - 5*alturaMenuUm);
+    CV::line(0, screenHeight - 6*alturaMenuUm, tamanhoMenuLateral, screenHeight - 6*alturaMenuUm);
+    CV::line(0, screenHeight - 7*alturaMenuUm, tamanhoMenuLateral, screenHeight - 7*alturaMenuUm);
+    CV::line(0, screenHeight - 8*alturaMenuUm, tamanhoMenuLateral, screenHeight - 8*alturaMenuUm);
+
+}
+
 //funcao chamada continuamente. Deve-se controlar o que desenhar por meio de variaveis globais
 //Todos os comandos para desenho na canvas devem ser chamados dentro da render().
 //Deve-se manter essa função com poucas linhas de codigo.
 void render()
 {
     desenhaFundo();
-    desenhaImagens();
-    buttonManager.renderButtons();
+    desenhaInterface();
+    uiManager.drawButtons();
 
    Sleep(10); //nao eh controle de FPS. Somente um limitador de FPS.
 }
@@ -80,25 +102,37 @@ void mouse(int button, int state, int wheel, int direction, int x, int y)
 {
    mouseX = x; //guarda as coordenadas do mouse para exibir dentro da render()
    mouseY = y;
-   buttonManager.handleMouseEvent(button, state, mouseX, mouseY);
    printf("state: %d button: %d\n", state, button);
+   uiManager.handleMouseEvent(button, state, x, y);
 }
 
 
 void acaoBotao1() {
     printf("botao clicado!\n");
-}
 
-void setupBotoes() {
-    // Adicionar um botão na posição (50, 50) até (150, 100)
-    buttonManager.addButton(200, 200, 350, 300, acaoBotao1);
 }
 
 int main(void)
 {
-    setupLayers();
+    //setupLayers(img1);
     CV::translate(0, 0);
-    setupBotoes();
+    // Botão normal:
+    uiManager.addButton(std::make_unique<NormalButton>(
+        50, 50, 150, 100,
+        [](){ std::cout << "Botão normal clicado!" << std::endl; }
+    ));
+
+// Checkbox:
+uiManager.addButton(std::make_unique<CheckboxButton>(
+    200, 50, 250, 100,
+    [](bool state){ std::cout << "Checkbox agora está " << (state ? "ativo" : "inativo") << std::endl; }
+));
+
+// Slider:
+uiManager.addButton(std::make_unique<SliderButton>(
+    350, 75, 25,
+    [](int value){ std::cout << "Slider valor: " << value << std::endl; }
+));
     CV::init(&screenWidth, &screenHeight, "Titulo da Janela: Canvas 2D - Pressione 1, 2, 3");
 
     CV::run();

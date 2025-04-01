@@ -1,29 +1,41 @@
 #ifndef LAYER_HPP
 #define LAYER_HPP
 
+#include "Bmp.h"
 #include <vector>
-#include <algorithm>
-#include "Bmp.h"  // Supondo que sua classe Bmp esteja separada
 
 class Layer {
-public:
+private:
     Bmp* image;
     bool visible;
-    int offsetX, offsetY;
+    int index;
 
-    Layer(Bmp* img, int x = 0, int y = 0);
-    void setVisibility(bool v);
+public:
+    Layer(Bmp* img, int idx);
+
     void draw();
-    void setOffset(int x, int y);
+    void toggleVisibility();
+    void setIndex(int idx);
+    int getIndex() const;
+    bool isVisible() const;
+    Bmp* getImage();
 };
 
-// Gerenciador de camadas
-extern std::vector<Layer> layers;
+class LayerManager {
+private:
+    std::vector<Layer> layers;
+    int activeLayerIndex;
 
-void desenhaImagens();
-void moveLayerUp(int index);
-void moveLayerDown(int index);
-void toggleVisibility(int index);
-void setupLayers();
+public:
+    LayerManager();
+    void addLayer(Bmp* img);
+    void removeLayer(int idx);
+    void moveLayerUp(int idx);
+    void moveLayerDown(int idx);
+    void toggleLayerVisibility(int idx);
+    void setActiveLayer(int idx);
+    Layer* getActiveLayer();
+    void drawLayers();
+};
 
-#endif
+#endif // LAYER_HPP

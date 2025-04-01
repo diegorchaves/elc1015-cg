@@ -42,6 +42,8 @@
 			<Add library="../lib/libglu32.a" />
 		</Linker>
 		<Unit filename="src/Bmp.h" />
+		<Unit filename="src/Button.cpp" />
+		<Unit filename="src/Button.hpp" />
 		<Unit filename="src/Layer.cpp" />
 		<Unit filename="src/Layer.hpp" />
 		<Unit filename="src/Vector2.h" />
